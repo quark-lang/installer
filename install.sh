@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-set -euo pipefail
+set -eu
 
 ERROR=$'\033[0;31mError\033[0m'
 DONE=$'\033[0;32mdone\033[0m'
