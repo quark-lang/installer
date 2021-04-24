@@ -71,7 +71,7 @@ case $SHELL in
 		CONFIG_FISH="${HOME}/.config/fish/config.fish"
 		echo -n "* Configuring ${CONFIG_FISH}..."
 		echo "set PATH ${INSTALL_FOLDER} \$PATH" >> $CONFIG_FISH
-		echo "set -x QUARK \"${INSTALL_FOLDER}\"" >> $CONFIG_FISH
+		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $CONFIG_FISH
 		echo "$DONE"
 		;;
 	*)
