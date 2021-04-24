@@ -3,9 +3,9 @@
 Selfscript to install Quark on your system.
 It automatically installs the latest Quark commit version.
 
-### With Shell
+### With Bash
 ```
-curl -fsSL https://raw.githubusercontent.com/quark-lang/installer/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/quark-lang/installer/master/install.sh | bash
 ```
 
 ### With PowerShell
