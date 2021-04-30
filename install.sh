@@ -32,6 +32,11 @@ fi
 
 INSTALL_FOLDER="${HOME}/.quark"
 
+if [[ "$#" -geq 1 ]]
+then
+	INSTALL_FOLDER = "$1"
+fi
+
 if [[ -d $INSTALL_FOLDER ]]
 then
 	rm -fr $INSTALL_FOLDER
