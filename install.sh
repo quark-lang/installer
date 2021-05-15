@@ -56,23 +56,23 @@ echo "$DONE"
 echo -n "* Cleaning ${INSTALL_FOLDER} directory..."
 rm -fr ${FILE}
 echo "$DONE"
-
+SHELL=$(echo $SHELL | rev | cut -d'/' -f 1 | rev) # Get only shell binary name.
 case $SHELL in
-	"/bin/bash"|"/usr/bin/bash")
+	"bash")
 		BASHRC="${HOME}/.bashrc"
 		echo -n "* Configuring ${BASHRC}..."
 		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> $BASHRC
 		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $BASHRC
 		echo "$DONE"
 		;;
-	"/bin/zsh"|"/usr/bin/zsh")
+	"zsh")
 		ZSHRC="${HOME}/.zshrc"
 		echo -n "* Configuring ${ZSHRC}..."
 		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> $ZSHRC
 		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $ZSHRC
 		echo "$DONE"
 		;;
-	"/bin/fish"|"/usr/bin/fish")
+	"fish")
 		CONFIG_FISH="${HOME}/.config/fish/config.fish"
 		echo -n "* Configuring ${CONFIG_FISH}..."
 		echo "set PATH ${INSTALL_FOLDER} \$PATH" >> $CONFIG_FISH
@@ -85,5 +85,4 @@ case $SHELL in
 		echo "And set a \`QUARK\` environment variable pointing to \"${INSTALL_FOLDER}\"."
 		;;
 esac
-
 echo 
