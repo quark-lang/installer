@@ -85,4 +85,4 @@ case $SHELL in
 		echo "And set a \`QUARK\` environment variable pointing to \"${INSTALL_FOLDER}\"."
 		;;
 esac
-echo 
+echo
