@@ -32,21 +32,21 @@ fi
 
 INSTALL_FOLDER="${HOME}/.quark"
 
-if [[ "$#" -geq 1 ]]
+if [[ "$#" -ge 1 ]]
 then
-	INSTALL_FOLDER = "$1"
+	INSTALL_FOLDER="$1"
 fi
 
 if [[ -d $INSTALL_FOLDER ]]
 then
-	rm -fr $INSTALL_FOLDER
+	rm -fr "$INSTALL_FOLDER"
 fi
 
-mkdir -p $INSTALL_FOLDER
-cd $INSTALL_FOLDER
+mkdir -p "$INSTALL_FOLDER"
+cd "$INSTALL_FOLDER"
 
 echo -n "* Downloading the latest Quark release archive... "
-wget -q ${DL_LINK}/${FILE}
+wget -q "${DL_LINK}"/${FILE}
 echo "$DONE"
 
 echo -n "* Deflating archive..."
@@ -56,27 +56,27 @@ echo "$DONE"
 echo -n "* Cleaning ${INSTALL_FOLDER} directory..."
 rm -fr ${FILE}
 echo "$DONE"
-SHELL=$(echo $SHELL | rev | cut -d'/' -f 1 | rev) # Get only shell binary name.
+SHELL=$(echo "$SHELL" | rev | cut -d'/' -f 1 | rev) # Get only shell binary name.
 case $SHELL in
 	"bash")
 		BASHRC="${HOME}/.bashrc"
 		echo -n "* Configuring ${BASHRC}..."
-		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> $BASHRC
-		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $BASHRC
+		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> "$BASHRC"
+		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> "$BASHRC"
 		echo "$DONE"
 		;;
 	"zsh")
 		ZSHRC="${HOME}/.zshrc"
 		echo -n "* Configuring ${ZSHRC}..."
-		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> $ZSHRC
-		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $ZSHRC
+		echo "PATH=${INSTALL_FOLDER}:\$PATH" >> "$ZSHRC"
+		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> "$ZSHRC"
 		echo "$DONE"
 		;;
 	"fish")
 		CONFIG_FISH="${HOME}/.config/fish/config.fish"
 		echo -n "* Configuring ${CONFIG_FISH}..."
-		echo "set PATH ${INSTALL_FOLDER} \$PATH" >> $CONFIG_FISH
-		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> $CONFIG_FISH
+		echo "set PATH ${INSTALL_FOLDER} \$PATH" >> "$CONFIG_FISH"
+		echo "export QUARK=\"${INSTALL_FOLDER}\"" >> "$CONFIG_FISH"
 		echo "$DONE"
 		;;
 	*)
